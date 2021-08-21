@@ -1,0 +1,338 @@
+\documentclass{beamer}
+\usepackage{dtklogos}
+\title{Introduction to \XeLaTeX}
+\author{Stefano Coretta}
+
+\usetheme{Szeged}
+\usecolortheme{beaver}
+
+
+\usepackage{polyglossia}
+	\setmainlanguage{english}
+\usepackage{fontspec}
+	\defaultfontfeatures{Mapping=tex-text}
+	\setmainfont{DejaVu Sans}
+	\setsansfont{DejaVu Sans}
+	\setmonofont{DejaVu Sans Mono}
+	\setromanfont[Renderer=ICU]{Charis SIL}
+	\newfontfamily\SC{DejaVu Sans SC}
+\usepackage{ctable,multicol,multirow,array,listings}
+	\lstset{frame=single, numbers=left,breaklines=true,language=[LaTeX]TeX,breakindent=0pt}
+\usepackage{graphicx}
+\usepackage{gb4e}
+\usepackage{etoolbox}
+\renewcommand{\eachwordone}{\sffamily\bfseries}
+\pretocmd{\glt}{\sffamily}{}{}
+	\let\eachwordtwo=\sffamily
+
+
+	
+\setbeamertemplate{caption}[numbered]
+\setbeamertemplate{section in toc}[sections numbered]
+\setbeamertemplate{footline}
+{%
+  \begin{beamercolorbox}[colsep=1.5pt]{upper separation line foot}
+  \end{beamercolorbox}
+  \hbox{%
+    \begin{beamercolorbox}[wd=0.333333\paperwidth, ht=2.5ex, dp=1.125ex, center]{title in head/foot}%
+      \usebeamerfont{author in head/foot}\insertshortauthor
+    \end{beamercolorbox}%
+    \begin{beamercolorbox}[wd=0.333333\paperwidth, ht=2.5ex, dp=1.125ex, center]{title in head/foot}%
+      \usebeamerfont{title in head/foot}\insertshorttitle
+    \end{beamercolorbox}%
+    \begin{beamercolorbox}[wd=0.333333\paperwidth, ht=2.5ex, dp=1.125ex, center]{title in head/foot}%
+      \usebeamerfont{title in head/foot}\insertframenumber/\inserttotalframenumber\hspace*{2ex}
+    \end{beamercolorbox}}
+  \begin{beamercolorbox}[colsep=1.5pt]{lower separation line foot}
+  \end{beamercolorbox}
+}
+
+%%%%%%%%%%%%%%%%
+%%% DOCUMENT %%%
+%%%%%%%%%%%%%%%%
+
+
+\begin{document}
+
+\begin{frame}
+	\maketitle
+\end{frame}
+
+\begin{frame}
+	\frametitle{Contents}
+	\tableofcontents
+\end{frame}
+
+\section{Introduction}
+
+\begin{frame}
+	\frametitle{What is \XeLaTeX{}?}
+	
+\begin{itemize}
+\item it is a mark-up language for typesetting and text writing (and more)
+\item it is a variant of the \LaTeX{} format that introduced full Unicode support and \texttt{.ttf}, \texttt{.otf} font handling
+\item it is implemented by the \XeTeX{} engine, that is derived from the \TeX{} system
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}
+	\frametitle{How does it work?}
+	
+\begin{itemize}
+\item put the \XeLaTeX{} code in a \texttt{.tex} with the content of your document
+\item the \XeTeX{} engine reads and typeset the code
+\item a \texttt{.pdf} file with your document is produced
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}
+	\frametitle{Get it!}
+	
+\begin{itemize}
+\item download a \TeX{} distribution (\textit{distro})
+\begin{itemize}
+\item MikTeX
+\item TeXlive 
+\item MacTeX
+\end{itemize}
+\item a \textit{distro} contains both the systems and the engines, plus software that ease the typesetting process
+\end{itemize}
+
+\end{frame}
+
+\section{Typeset}
+\subsection{First steps}
+\begin{frame}[fragile]
+	\frametitle{Document class}
+	
+\begin{lstlisting}
+\documentclass{article}
+
+
+\begin{document}
+
+Hello.
+
+\end{document}
+\end{lstlisting}
+
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{Headings}
+	
+\begin{lstlisting}
+\documentclass[12pt,a4paper]{article}
+
+\begin{document}
+\tableofcontents
+\section{Introduzione}
+Text...
+
+\subsection{Premesse}
+TExt...
+
+\end{document}
+\end{lstlisting}
+
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{Title}
+	
+\begin{lstlisting}
+\documentclass{article}
+\title{Introduction to linguistics}
+\author{John Smith}
+\date{}
+
+\begin{document}
+\maketitle
+...
+
+\end{lstlisting}
+
+\end{frame}
+\subsection{Packages and layout}
+\begin{frame}[fragile]
+	\frametitle{Packages}
+	
+\begin{lstlisting}
+\documentclass{article}
+
+\usepackage{fontspec}
+  \setmainfont{Arial Unicode MS}
+\usepackage{polyglossia}
+  \setmainlanguage{english}
+...
+\end{lstlisting}
+
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{Text layout}
+	
+\begin{lstlisting}
+For a new paragraph, leave an empty row.
+
+This is the new paragraph. To format your text: \textit{italics}, \textbf{bold face}.
+
+For a footnote.\footnote{This is a footnote.}
+\end{lstlisting}
+
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{Bulleted and numered lists}
+\begin{lstlisting}
+\begin{itemize}
+\item Gender: masculine, feminine
+\item Number
+  \begin{enumerate}
+  \item singular
+  \item plural
+  \end{enumerate}
+\end{itemize}
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Bulleted and numered lists}
+\begin{itemize}
+\item Gender: masculine, feminine
+\item Number
+  \begin{enumerate}
+  \item singular
+  \item plural
+  \end{enumerate}
+\end{itemize}
+\end{frame}
+
+
+\section{Linguistics}
+\subsection{Standard elements}
+\begin{frame}[fragile]
+	\frametitle{Numbered examples}
+\begin{lstlisting}
+\usepackage{gb4e}
+...
+\begin{exe}
+\ex Nel mezzo del cammin di nostra vita
+\ex
+  \begin{xlist}
+  \ex Mi ritrovai per una selva oscura
+  \ex Che la diritta via era smarrita
+  \end{xlist}
+\end{exe}
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Numbered examples}
+\begin{exe}
+\ex Nel mezzo del cammin di nostra vita
+\ex
+  \begin{xlist}
+  \ex Mi ritrovai per una selva oscura
+  \ex Che la diritta via era smarrita
+  \end{xlist}
+\end{exe}
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{Tables}
+	
+\begin{lstlisting}
+\usepackage{ctable}
+...
+\ctable[caption=Objects,
+label=obj,
+pos=t
+]{lcc}{}{
+\FL
+ & Given O & New O \ML
+VOP & 85 & 65 \NN
+VPO & 100 & 147 \LL
+}
+\end{lstlisting}
+
+\end{frame}
+
+\begin{frame}
+	\frametitle{Tables}
+
+\ctable[caption=Objects,
+label=obj,
+pos=t
+]{lcc}{}{
+\FL
+ & \SC{Given O} & \SC{New O} \ML
+VOP & 85 & 65 \NN
+VPO & 100 & 147 \LL
+}
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{Interlinear glosses}
+	\small
+\begin{lstlisting}
+\begin{exe}
+\ex \gll Mi sdirrup-a-ia cu tutt-a a lap-a. \\
+1s.\SC{refl}  tumble-\SC{thm}-1s.\SC{past} \SC{com} all-\SC{f} \SC{def}.\SC{f} Piaggio.Ape-\SC{f} \\
+\glt "I tumbled with the whole Piaggio Ape."
+\end{exe}
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Interlinear glosses}
+
+\begin{exe}
+\ex \gll Mi sdirrup-a-ia cu tutt-a a lap-a. \\
+1s.\SC{refl}  tumble-\SC{thm}-1s.\SC{past} \SC{com} all-\SC{f} \SC{def}.\SC{f} Piaggio.Ape-\SC{f} \\
+\glt ``I tumbled with the whole Piaggio Ape.''
+\end{exe}
+\end{frame}
+
+
+\subsection{Special functions}
+
+\begin{frame}[fragile]
+	\frametitle{Cross-referencing}
+\begin{lstlisting}
+\section{Methodology}
+\label{metho}
+Testo...
+\begin{exe}
+\ex\label{es} Stay hungry, stay foolish.
+\end{exe}
+
+\section{Conclusioni}
+As I said in section \ref{metho}... In example (\ref{es})...
+
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{Bibliography}
+\begin{lstlisting}
+\usepackage{natbib}
+\setcitestyle{aysep={},notesep={:}}
+...
+As suggested by \citet[45--47]{dixon2001intro}... This was proved by several works \citep{dryer13,goldsmith1986auto,givon2002syntax}...
+...
+\bibliography{mybib}
+\bibliographystyle{unified}
+\end{lstlisting}
+
+
+\end{frame}
+
+
+
+
+
+
+\end{document}

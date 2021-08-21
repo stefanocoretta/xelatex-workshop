@@ -1,0 +1,43 @@
+\documentclass[a4paper]{memoir}
+% check the memoir class documentation for all the features
+
+\usepackage{graphicx}
+    \graphicspath{{./img/}} % set the folder with images
+
+\usepackage{polyglossia}
+    \setmainlanguage{english}
+    
+\usepackage{fontspec}
+
+% load your packages
+
+\begin{document}
+
+\frontmatter
+
+\input{./tex/abstract.tex}
+
+\tableofcontents
+\listoftables
+\listoffigures
+
+
+
+
+\mainmatter
+
+\input{./tex/introduction.tex}
+\input{./tex/methods.tex}
+%\input{./tex/conclusions.tex}
+
+
+\backmatter
+
+\appendix
+
+\input{./tex/appendix.tex}
+
+
+
+
+\end{document}

@@ -1,0 +1,331 @@
+\documentclass{beamer}
+\usepackage{dtklogos}
+\title{Introduzione a \XeLaTeX}
+\author{Stefano Coretta}
+\date{3 Dicembre 2013}
+\usetheme{Szeged}
+\usecolortheme{beaver}
+
+
+\usepackage{polyglossia}
+	\setmainlanguage{italian}
+\usepackage{fontspec}
+	\setmainfont{DejaVu Sans}
+	\setsansfont{DejaVu Sans}
+	\setmonofont{DejaVu Sans Mono}
+	\defaultfontfeatures{Mapping=tex-text}
+\usepackage{ctable,multicol,multirow,array,listings}
+	\lstset{frame=single, numbers=left,breaklines=true,language=[LaTeX]TeX,breakindent=0pt}
+\usepackage{graphicx}
+\usepackage{gb4e}
+	\let\eachwordone\bf
+\setbeamertemplate{caption}[numbered]
+\setbeamertemplate{section in toc}[sections numbered]
+\setbeamertemplate{footline}
+{%
+  \begin{beamercolorbox}[colsep=1.5pt]{upper separation line foot}
+  \end{beamercolorbox}
+  \hbox{%
+    \begin{beamercolorbox}[wd=0.333333\paperwidth, ht=2.5ex, dp=1.125ex, center]{title in head/foot}%
+      \usebeamerfont{author in head/foot}\insertshortauthor
+    \end{beamercolorbox}%
+    \begin{beamercolorbox}[wd=0.333333\paperwidth, ht=2.5ex, dp=1.125ex, center]{title in head/foot}%
+      \usebeamerfont{title in head/foot}\insertshorttitle
+    \end{beamercolorbox}%
+    \begin{beamercolorbox}[wd=0.333333\paperwidth, ht=2.5ex, dp=1.125ex, center]{title in head/foot}%
+      \usebeamerfont{title in head/foot}\insertframenumber/\inserttotalframenumber\hspace*{2ex}
+    \end{beamercolorbox}}
+  \begin{beamercolorbox}[colsep=1.5pt]{lower separation line foot}
+  \end{beamercolorbox}
+}
+
+%%%%%%%%%%%%%%%%
+%%% DOCUMENT %%%
+%%%%%%%%%%%%%%%%
+
+
+\begin{document}
+
+\begin{frame}
+	\maketitle
+\end{frame}
+
+\begin{frame}
+	\frametitle{Sommario}
+	\tableofcontents
+\end{frame}
+
+\section{Introduzione}
+
+\begin{frame}
+	\frametitle{Cos'è \XeLaTeX}
+	
+\begin{itemize}
+\item è un linguaggio di \textit{markup} per la compilazione tipografica e la stesura di testi (e non solo)
+\item è una variante del formato \LaTeX{} che introduce il supporto a Unicode e ai font \texttt{.ttf} e \texttt{.otf}
+\item è implementato dal motore \XeTeX, a sua volta derivato del sistema \TeX
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}
+	\frametitle{Come funziona}
+	
+\begin{itemize}
+\item in un file \texttt{.tex} si inserisce il codice con il contenuto del documento
+\item questo codice è letto e compilato dal motore (\XeLaTeX)
+\item l'output della compilazione è un file \texttt{.pdf}
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}
+	\frametitle{Come ottenerlo}
+	
+\begin{itemize}
+\item scaricando una distribuzione (\textit{distro}) \TeX
+\begin{itemize}
+\item MikTeX
+\item TeXlive 
+\item MacTeX
+\end{itemize}
+\item una \textit{distro} contiene sia i sistemi che i motori di compilazione, più software che facilitano la compilazione
+\end{itemize}
+
+\end{frame}
+
+\section{Compilazione}
+\subsection{Primi passi}
+\begin{frame}[fragile]
+	\frametitle{Classe del documento}
+	
+\begin{lstlisting}
+\documentclass{article}
+
+
+\begin{document}
+
+Ciao.
+
+\end{document}
+\end{lstlisting}
+
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{Intestazioni}
+	
+\begin{lstlisting}
+\documentclass[12pt,a4paper]{article}
+
+\begin{document}
+\tableofcontents
+\section{Introduzione}
+Testo...
+
+\subsection{Premesse}
+Testo...
+
+\end{document}
+\end{lstlisting}
+
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{Titolo}
+	
+\begin{lstlisting}
+\documentclass{article}
+\title{Introduzione alla linguistica}
+\author{Mario Rossi}
+\date{}
+
+\begin{document}
+\maketitle
+...
+
+\end{lstlisting}
+
+\end{frame}
+\subsection{Pacchetti e formattazione}
+\begin{frame}[fragile]
+	\frametitle{Pacchetti}
+	
+\begin{lstlisting}
+\documentclass{article}
+
+\usepackage{fontspec}
+  \setmainfont{Arial Unicode MS}
+\usepackage{polyglossia}
+  \setmainlanguage{italian}
+...
+\end{lstlisting}
+
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{Formattazione del testo}
+	
+\begin{lstlisting}
+Per un paragrafo nuovo, lascia uno spazio.
+
+Questo è un nuovo paragrafo. Per formattare il testo: \textit{corsivo}, \textbf{grassetto}.
+
+Per una nota a piè di pagina.\footnote{Questa è una nota a piè di pagina}
+\end{lstlisting}
+
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{Elenchi puntati e numerati}
+\begin{lstlisting}
+\begin{itemize}
+\item Genere: maschile, femminile
+\item Numero
+  \begin{enumerate}
+  \item singolare
+  \item plurale
+  \end{enumerate}
+\end{itemize}
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Elenchi puntati e numerati}
+\begin{itemize}
+\item Genere: maschile, femminile
+\item Numero
+  \begin{enumerate}
+  \item singolare
+  \item plurale
+  \end{enumerate}
+\end{itemize}
+\end{frame}
+
+
+
+
+\section{Linguistica}
+\subsection{Elementi comuni}
+\begin{frame}[fragile]
+	\frametitle{Esempi numerati}
+\begin{lstlisting}
+\usepackage{gb4e}
+...
+\begin{exe}
+\ex Nel mezzo del cammin di nostra vita
+\ex
+  \begin{xlist}
+  \ex Mi ritrovai per una selva oscura
+  \ex Che la diritta via era smarrita
+  \end{xlist}
+\end{exe}
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Esempi numerati}
+\begin{exe}
+\ex Nel mezzo del cammin di nostra vita
+\ex
+  \begin{xlist}
+  \ex Mi ritrovai per una selva oscura
+  \ex Che la diritta via era smarrita
+  \end{xlist}
+\end{exe}
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{Tabelle}
+	
+\begin{lstlisting}
+\usepackage{ctable}
+...
+\ctable[caption=Objects,
+label=obj,
+pos=t
+]{lcc}{}{
+\FL
+ & Given O & New O \ML
+VOP & 85 & 65 \NN
+VPO & 100 & 147 \LL
+}
+\end{lstlisting}
+
+\end{frame}
+
+\begin{frame}
+	\frametitle{Tabelle}
+
+\ctable[caption=Objects,
+label=obj,
+pos=t
+]{lcc}{}{
+\FL
+ & \textsc{Given O} & \textsc{New O} \ML
+VOP & 85 & 65 \NN
+VPO & 100 & 147 \LL
+}
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{Glosse interlineari}
+\begin{lstlisting}
+\begin{exe}
+\ex \gls This is a glossed example. \\
+questo è un glossato esempio \\
+\glt "Questo è un esempio glossato."
+\end{exe}
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Glosse interlineari}
+
+\begin{exe}
+\ex \gll This is a glossed example. \\
+questo è un glossato esempio \\
+\glt "Questo è un esempio glossato."
+\end{exe}
+\end{frame}
+
+
+\subsection{Funzioni speciali}
+
+\begin{frame}[fragile]
+	\frametitle{Riferimenti incrociati}
+\begin{lstlisting}
+\section{Metodologia}
+\label{meto}
+Testo...
+\begin{exe}
+\ex\label{es} Stay hungry, stay foolish.
+\end{exe}
+
+\section{Conclusioni}
+Come detto nella sezione \ref{meto}... Nell'esempio \ref{es}...
+
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{Bibliografia}
+\begin{lstlisting}
+\usepackage{natbib}
+\setcitestyle{aysep={},notesep={:}}
+...
+Come suggerito da \citet[45--47]{dixon2001intro}... Questo è stato confermato da molti studi, ai quali rimando \citep{dryer13,goldsmith1986auto,givon2002syntax}...
+...
+\bibliography{mybib}
+\bibliographystyle{unified}
+\end{lstlisting}
+
+
+\end{frame}
+
+
+
+
+
+
+\end{document}

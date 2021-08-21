@@ -1,0 +1,14 @@
+\documentclass[border=.2cm, convert]{standalone}
+
+% the "convert" option above produces a .png image. For this option to work, though, tou need to go in Preferences > Commands and change the XeLaTeX command to "/Library/TeX/texbin/xelatex -shell-escape -synctex=1 -interaction=nonstopmode %.tex". This adds "-shell-escape" which means that the pdf file is "passed" onto the shell (the Terminal app): there, the command "convert" is executed. Sorry if it's a bit technical, you can write to me if you have problems or if you wanna know more about it. :)
+
+% Now you can compile normally (clicking on the double green triangle button)
+
+\usepackage{tikz}
+\usepackage{tikz-qtree}
+
+\begin{document}
+
+\Tree [.NP [.Det the ] [.N cat ] ]
+
+\end{document}
